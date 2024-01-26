@@ -19,6 +19,7 @@ class InternDetailsScreen extends StatefulWidget {
 
 class _InternDetailsScreenState extends State<InternDetailsScreen> {
   List<InternshipsData>? resultProceed = [];
+  bool _isLoading = true;
 
   callApi() async {
     try {
@@ -48,6 +49,13 @@ class _InternDetailsScreenState extends State<InternDetailsScreen> {
   void initState() {
     super.initState();
     callApi();
+
+    // for shimmer effect
+    // Future.delayed(Duration(seconds: 2),(){
+    //   setState(() {
+    //     _isLoading = false;
+    //   });
+    // });
   }
 
   @override
