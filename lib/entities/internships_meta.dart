@@ -41,8 +41,7 @@ class InternshipsData with _$InternshipsData {
     String? duration,
     @JsonKey(name: "stipend") Stipend? stipend,
     @JsonKey(name: "location_names") List<String>? locationNames,
-    @JsonKey(name:  "posted_by_label") String? postedByLabel,
-    
+    @JsonKey(name: "posted_by_label") String? postedByLabel,
   }) = _InternshipsData;
 
   factory InternshipsData.fromJson(Map<String, Object?> json) =>

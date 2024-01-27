@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:internshala_task/intern_details_screen.dart';
+import 'package:internshala_task/screens/intern_details_screen.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(Duration(seconds: 2), () {
-      Get.to(()=> InternDetailsScreen());
+      Get.off(()=> InternDetailsScreen());
     },);
   }
   @override
@@ -46,6 +46,7 @@ class _SplashScreenState extends State<SplashScreen> {
               textAlign: TextAlign.center,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
             ),
+            20.heightBox,
           ],
         ),
       ),

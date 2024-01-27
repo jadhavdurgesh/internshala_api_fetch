@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:internshala_task/widgets/actively_hiring_card.dart';
+import 'package:internshala_task/widgets/skelaton.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../const/colors.dart';
@@ -17,19 +18,19 @@ class CustomCardWidget extends StatelessWidget {
   String employmentType;
   String postedByLabel;
   String internType;
-  CustomCardWidget({
-    Key? key,
-    required this.title,
-    required this.companyTitle,
-    required this.isWorkFromHome,
-    required this.startDate,
-    required this.duration,
-    required this.stipend,
-    required this.employmentType,
-    required this.postedByLabel,
-    required this.internType,
-    String 
-  }) : super(key: key);
+  CustomCardWidget(
+      {Key? key,
+      required this.title,
+      required this.companyTitle,
+      required this.isWorkFromHome,
+      required this.startDate,
+      required this.duration,
+      required this.stipend,
+      required this.employmentType,
+      required this.postedByLabel,
+      required this.internType,
+      String})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -183,7 +184,9 @@ class CustomCardWidget extends StatelessWidget {
                   child: Text(
                     "View Details",
                     style: TextStyle(
-                        color: blueColor, fontWeight: FontWeight.w600),
+                        fontFamily: 'Roboto',
+                        color: blueColor,
+                        fontWeight: FontWeight.w500),
                   )),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 24, vertical: 8),

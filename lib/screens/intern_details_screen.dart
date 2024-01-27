@@ -7,8 +7,9 @@ import 'package:internshala_task/const/colors.dart';
 import 'package:internshala_task/entities/intershal_search_response.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import 'entities/internships_meta.dart';
-import 'widgets/card_widget.dart';
+import '../entities/internships_meta.dart';
+import '../widgets/card_widget.dart';
+import '../widgets/new_card_skeleton.dart';
 
 class InternDetailsScreen extends StatefulWidget {
   const InternDetailsScreen({super.key});
@@ -51,11 +52,11 @@ class _InternDetailsScreenState extends State<InternDetailsScreen> {
     callApi();
 
     // for shimmer effect
-    // Future.delayed(Duration(seconds: 2),(){
-    //   setState(() {
-    //     _isLoading = false;
-    //   });
-    // });
+    Future.delayed(Duration(seconds: 2),(){
+      setState(() {
+        _isLoading = false;
+      });
+    });
   }
 
   @override
@@ -98,7 +99,7 @@ class _InternDetailsScreenState extends State<InternDetailsScreen> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           12.heightBox,
-          Container(
+          _isLoading ? FilterSkeleton() :  Container(
             padding: EdgeInsets.symmetric(vertical: 12),
             decoration: BoxDecoration(
                 border: BorderDirectional(
@@ -148,7 +149,7 @@ class _InternDetailsScreenState extends State<InternDetailsScreen> {
                 // return ListTile(
                 //   title: Text('${item?.title ?? 'N/A'}'),
                 // );
-                return Column(
+                return _isLoading ? NewCardSkeleton() :  Column(
                   children: [
                     CustomCardWidget(
                       title: item?.title ?? 'N/A',
@@ -159,8 +160,8 @@ class _InternDetailsScreenState extends State<InternDetailsScreen> {
                       employmentType: item?.employmentType ?? 'N/A',
                       postedByLabel: item?.postedByLabel ?? 'N/A',
                       internType: item?.type ?? 'N/A',
+                      // locationNames: item?.locationNames?.elementAt(0) ?? 'N/A',
                       isWorkFromHome: item?.workFromHome ?? false,
-
                     ),
                     Container(
                       height: 12,
