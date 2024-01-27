@@ -75,6 +75,7 @@ mixin _$InternshipsData {
   List<String>? get locationNames => throw _privateConstructorUsedError;
   @JsonKey(name: "posted_by_label")
   String? get postedByLabel => throw _privateConstructorUsedError;
+  List<Location>? get locations => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -120,7 +121,8 @@ abstract class $InternshipsDataCopyWith<$Res> {
       String? duration,
       @JsonKey(name: "stipend") Stipend? stipend,
       @JsonKey(name: "location_names") List<String>? locationNames,
-      @JsonKey(name: "posted_by_label") String? postedByLabel});
+      @JsonKey(name: "posted_by_label") String? postedByLabel,
+      List<Location>? locations});
 
   $ApplicationStatusMessageCopyWith<$Res>? get applicationStatusMessage;
   $StipendCopyWith<$Res>? get stipend;
@@ -169,6 +171,7 @@ class _$InternshipsDataCopyWithImpl<$Res, $Val extends InternshipsData>
     Object? stipend = freezed,
     Object? locationNames = freezed,
     Object? postedByLabel = freezed,
+    Object? locations = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -291,6 +294,10 @@ class _$InternshipsDataCopyWithImpl<$Res, $Val extends InternshipsData>
           ? _value.postedByLabel
           : postedByLabel // ignore: cast_nullable_to_non_nullable
               as String?,
+      locations: freezed == locations
+          ? _value.locations
+          : locations // ignore: cast_nullable_to_non_nullable
+              as List<Location>?,
     ) as $Val);
   }
 
@@ -360,7 +367,8 @@ abstract class _$$InternshipsDataImplCopyWith<$Res>
       String? duration,
       @JsonKey(name: "stipend") Stipend? stipend,
       @JsonKey(name: "location_names") List<String>? locationNames,
-      @JsonKey(name: "posted_by_label") String? postedByLabel});
+      @JsonKey(name: "posted_by_label") String? postedByLabel,
+      List<Location>? locations});
 
   @override
   $ApplicationStatusMessageCopyWith<$Res>? get applicationStatusMessage;
@@ -409,6 +417,7 @@ class __$$InternshipsDataImplCopyWithImpl<$Res>
     Object? stipend = freezed,
     Object? locationNames = freezed,
     Object? postedByLabel = freezed,
+    Object? locations = freezed,
   }) {
     return _then(_$InternshipsDataImpl(
       id: freezed == id
@@ -531,6 +540,10 @@ class __$$InternshipsDataImplCopyWithImpl<$Res>
           ? _value.postedByLabel
           : postedByLabel // ignore: cast_nullable_to_non_nullable
               as String?,
+      locations: freezed == locations
+          ? _value._locations
+          : locations // ignore: cast_nullable_to_non_nullable
+              as List<Location>?,
     ));
   }
 }
@@ -570,9 +583,11 @@ class _$InternshipsDataImpl implements _InternshipsData {
       this.duration,
       @JsonKey(name: "stipend") this.stipend,
       @JsonKey(name: "location_names") final List<String>? locationNames,
-      @JsonKey(name: "posted_by_label") this.postedByLabel})
+      @JsonKey(name: "posted_by_label") this.postedByLabel,
+      final List<Location>? locations})
       : _jobSegments = jobSegments,
-        _locationNames = locationNames;
+        _locationNames = locationNames,
+        _locations = locations;
 
   factory _$InternshipsDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$InternshipsDataImplFromJson(json);
@@ -677,10 +692,19 @@ class _$InternshipsDataImpl implements _InternshipsData {
   @override
   @JsonKey(name: "posted_by_label")
   final String? postedByLabel;
+  final List<Location>? _locations;
+  @override
+  List<Location>? get locations {
+    final value = _locations;
+    if (value == null) return null;
+    if (_locations is EqualUnmodifiableListView) return _locations;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'InternshipsData(id: $id, title: $title, employmentType: $employmentType, applicationStatusMessage: $applicationStatusMessage, jobTitle: $jobTitle, workFromHome: $workFromHome, segment: $segment, segmentLabelValue: $segmentLabelValue, internshipTypeLabelValue: $internshipTypeLabelValue, jobSegments: $jobSegments, companyName: $companyName, companyUrl: $companyUrl, isPremium: $isPremium, isPremiumInternship: $isPremiumInternship, employerName: $employerName, companyLogo: $companyLogo, type: $type, url: $url, isInternchallenge: $isInternchallenge, isExternal: $isExternal, isActive: $isActive, expiresAt: $expiresAt, closedAt: $closedAt, profileName: $profileName, partTime: $partTime, startDate: $startDate, duration: $duration, stipend: $stipend, locationNames: $locationNames, postedByLabel: $postedByLabel)';
+    return 'InternshipsData(id: $id, title: $title, employmentType: $employmentType, applicationStatusMessage: $applicationStatusMessage, jobTitle: $jobTitle, workFromHome: $workFromHome, segment: $segment, segmentLabelValue: $segmentLabelValue, internshipTypeLabelValue: $internshipTypeLabelValue, jobSegments: $jobSegments, companyName: $companyName, companyUrl: $companyUrl, isPremium: $isPremium, isPremiumInternship: $isPremiumInternship, employerName: $employerName, companyLogo: $companyLogo, type: $type, url: $url, isInternchallenge: $isInternchallenge, isExternal: $isExternal, isActive: $isActive, expiresAt: $expiresAt, closedAt: $closedAt, profileName: $profileName, partTime: $partTime, startDate: $startDate, duration: $duration, stipend: $stipend, locationNames: $locationNames, postedByLabel: $postedByLabel, locations: $locations)';
   }
 
   @override
@@ -742,7 +766,9 @@ class _$InternshipsDataImpl implements _InternshipsData {
             const DeepCollectionEquality()
                 .equals(other._locationNames, _locationNames) &&
             (identical(other.postedByLabel, postedByLabel) ||
-                other.postedByLabel == postedByLabel));
+                other.postedByLabel == postedByLabel) &&
+            const DeepCollectionEquality()
+                .equals(other._locations, _locations));
   }
 
   @JsonKey(ignore: true)
@@ -778,7 +804,8 @@ class _$InternshipsDataImpl implements _InternshipsData {
         duration,
         stipend,
         const DeepCollectionEquality().hash(_locationNames),
-        postedByLabel
+        postedByLabel,
+        const DeepCollectionEquality().hash(_locations)
       ]);
 
   @JsonKey(ignore: true)
@@ -829,8 +856,8 @@ abstract class _InternshipsData implements InternshipsData {
       final String? duration,
       @JsonKey(name: "stipend") final Stipend? stipend,
       @JsonKey(name: "location_names") final List<String>? locationNames,
-      @JsonKey(name: "posted_by_label")
-      final String? postedByLabel}) = _$InternshipsDataImpl;
+      @JsonKey(name: "posted_by_label") final String? postedByLabel,
+      final List<Location>? locations}) = _$InternshipsDataImpl;
 
   factory _InternshipsData.fromJson(Map<String, dynamic> json) =
       _$InternshipsDataImpl.fromJson;
@@ -919,6 +946,8 @@ abstract class _InternshipsData implements InternshipsData {
   @override
   @JsonKey(name: "posted_by_label")
   String? get postedByLabel;
+  @override
+  List<Location>? get locations;
   @override
   @JsonKey(ignore: true)
   _$$InternshipsDataImplCopyWith<_$InternshipsDataImpl> get copyWith =>

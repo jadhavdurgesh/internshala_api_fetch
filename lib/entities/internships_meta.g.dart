@@ -46,6 +46,9 @@ _$InternshipsDataImpl _$$InternshipsDataImplFromJson(
           ?.map((e) => e as String)
           .toList(),
       postedByLabel: json['posted_by_label'] as String?,
+      locations: (json['locations'] as List<dynamic>?)
+          ?.map((e) => Location.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$InternshipsDataImplToJson(
@@ -81,4 +84,5 @@ Map<String, dynamic> _$$InternshipsDataImplToJson(
       'stipend': instance.stipend,
       'location_names': instance.locationNames,
       'posted_by_label': instance.postedByLabel,
+      'locations': instance.locations,
     };

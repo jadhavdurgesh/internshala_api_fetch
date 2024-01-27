@@ -1,39 +1,36 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:internshala_task/widgets/actively_hiring_card.dart';
-import 'package:internshala_task/widgets/skelaton.dart';
+import 'package:internshala_task/entities/internships_meta.dart';
+import 'package:internshala_task/entities/intershal_search_response.dart';
+import 'package:internshala_task/widgets/cards/actively_hiring_card.dart';
+import 'package:internshala_task/widgets/shimmer/skelaton.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../const/colors.dart';
+import '../../const/colors.dart';
 import 'info_card.dart';
 
 class CustomCardWidget extends StatelessWidget {
-  String title;
-  String companyTitle;
-  bool isWorkFromHome;
-  String startDate;
-  String duration;
-  String stipend;
-  String employmentType;
-  String postedByLabel;
-  String internType;
-  CustomCardWidget(
-      {Key? key,
-      required this.title,
-      required this.companyTitle,
-      required this.isWorkFromHome,
-      required this.startDate,
-      required this.duration,
-      required this.stipend,
-      required this.employmentType,
-      required this.postedByLabel,
-      required this.internType,
-      String})
-      : super(key: key);
+  final InternshipsData? internshipsData;
+  CustomCardWidget({
+    Key? key,
+    required this.internshipsData,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // internshipsData?.locationNames?.join(', '); // Join keyboard
+
+    // return ListView.builder(
+    //   shrinkWrap: true,
+    //   physics: NeverScrollableScrollPhysics(),
+    //   itemBuilder: (context, index) {
+    //     final item = internshipsData?.locations?.elementAt(index);
+    //     return Text(item?.locationName ?? 'N/A');
+    //   },
+    //   itemCount: internshipsData?.locations?.length ?? 0,
+    // );
+
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration:
@@ -57,7 +54,7 @@ class CustomCardWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    title,
+                    internshipsData?.title ?? 'N/A',
                     style: TextStyle(
                         fontFamily: 'Roboto',
                         fontWeight: FontWeight.w500,
@@ -66,7 +63,7 @@ class CustomCardWidget extends StatelessWidget {
                   Container(
                     width: 250,
                     child: Text(
-                      companyTitle,
+                      internshipsData?.companyName ?? 'N/A',
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                       style: TextStyle(
@@ -88,7 +85,7 @@ class CustomCardWidget extends StatelessWidget {
           Row(
             children: [
               Icon(
-                isWorkFromHome
+                internshipsData?.workFromHome ?? false
                     ? CupertinoIcons.home
                     : CupertinoIcons.location_solid,
                 size: 14,
@@ -96,7 +93,9 @@ class CustomCardWidget extends StatelessWidget {
               ),
               4.widthBox,
               Text(
-                isWorkFromHome ? "Work from Home" : "In-Office",
+                internshipsData?.workFromHome ?? false
+                    ? "Work from Home"
+                    : internshipsData?.locationNames?.join(', ') ?? '',
                 style: TextStyle(
                     fontSize: 14, fontFamily: 'Roboto', color: parameterColor
                     // fontWeight: FontWeight.w200
@@ -113,7 +112,7 @@ class CustomCardWidget extends StatelessWidget {
               ),
               4.widthBox,
               Text(
-                startDate,
+                internshipsData?.startDate ?? 'N/A',
                 style: TextStyle(
                     fontSize: 14, fontFamily: 'Roboto', color: parameterColor),
               ),
@@ -127,7 +126,7 @@ class CustomCardWidget extends StatelessWidget {
               ),
               4.widthBox,
               Text(
-                duration,
+                internshipsData?.duration ?? 'N/A',
                 style: TextStyle(
                     fontSize: 14, fontFamily: 'Roboto', color: parameterColor),
               ),
@@ -146,7 +145,7 @@ class CustomCardWidget extends StatelessWidget {
               ),
               4.widthBox,
               Text(
-                stipend,
+                internshipsData?.stipend?.salary ?? 'N/A',
                 style: TextStyle(
                     fontSize: 14, fontFamily: 'Roboto', color: parameterColor),
               ),
@@ -156,12 +155,12 @@ class CustomCardWidget extends StatelessWidget {
           Row(
             children: [
               InfoCard(
-                title: employmentType,
+                title: internshipsData?.employmentType ?? 'N/A',
                 isIcon: false,
               ),
               8.widthBox,
               InfoCard(
-                title: internType,
+                title: internshipsData?.type ?? 'N/A',
                 isIcon: false,
               )
             ],
@@ -171,7 +170,7 @@ class CustomCardWidget extends StatelessWidget {
             children: [
               InfoCard(
                 isIcon: true,
-                title: postedByLabel,
+                title: internshipsData?.postedByLabel ?? 'N/A',
               ),
             ],
           ),

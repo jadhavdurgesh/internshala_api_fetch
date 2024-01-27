@@ -8,8 +8,8 @@ import 'package:internshala_task/entities/intershal_search_response.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../entities/internships_meta.dart';
-import '../widgets/card_widget.dart';
-import '../widgets/new_card_skeleton.dart';
+import '../widgets/cards/card_widget.dart';
+import '../widgets/shimmer/new_card_skeleton.dart';
 
 class InternDetailsScreen extends StatefulWidget {
   const InternDetailsScreen({super.key});
@@ -152,16 +152,7 @@ class _InternDetailsScreenState extends State<InternDetailsScreen> {
                 return _isLoading ? NewCardSkeleton() :  Column(
                   children: [
                     CustomCardWidget(
-                      title: item?.title ?? 'N/A',
-                      companyTitle: item?.companyName ?? 'N/A',
-                      startDate: item?.startDate ?? 'N/A',
-                      duration: item?.duration ?? 'N/A',
-                      stipend: item?.stipend?.salary ?? 'N/A',
-                      employmentType: item?.employmentType ?? 'N/A',
-                      postedByLabel: item?.postedByLabel ?? 'N/A',
-                      internType: item?.type ?? 'N/A',
-                      // locationNames: item?.locationNames?.elementAt(0) ?? 'N/A',
-                      isWorkFromHome: item?.workFromHome ?? false,
+                      internshipsData: item,
                     ),
                     Container(
                       height: 12,

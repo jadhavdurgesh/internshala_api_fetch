@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:internshala_task/entities/location.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'application_status_message.dart';
@@ -42,6 +43,7 @@ class InternshipsData with _$InternshipsData {
     @JsonKey(name: "stipend") Stipend? stipend,
     @JsonKey(name: "location_names") List<String>? locationNames,
     @JsonKey(name: "posted_by_label") String? postedByLabel,
+    List<Location>? locations,
   }) = _InternshipsData;
 
   factory InternshipsData.fromJson(Map<String, Object?> json) =>
